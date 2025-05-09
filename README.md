@@ -105,7 +105,45 @@ int main(int argc, char** argv)
 }
 ```
 
-# Examples of redfishcli queries
+# Building the redfishcli container
+
+To build, cd into the project root directory and execute:
+
+```
+docker build -f redfishcli.Dockerfile -t redfishcli:latest .
+```
+
+To run the CLI:
+
+```
+docker run -it --rm redfishcli --help                  
+Usage: /usr/local/bin/redfishcli [OPTIONS] [Query]
+
+Test libRedfish.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -?, --help                 Display this usage message
+  -V, --version              Display the software version
+  -H, --host                 The host to query
+  -v, --verbose              Log more information
+  -T, --token [bearer token] A bearer token to use instead of standard redfish auth
+  -u, --username [user]      The username to authenticate with
+  -p, --password [pass]      The password to authenticate with
+  -S, --session              Use session based auth, as opposed to basic auth
+Report bugs on GitHub: https://github.com/DMTF/libredfish/issues
+```
+
+Example of connecting to a service running on localhost, port 8081
+
+```
+docker run -it --rm redfishcli -H http://localhost:8081     
+createServiceEnumerator: Entered. host = http://localhost:8081, rootUri = (null), auth = (nil), flags = 0
+...
+/>
+```
+
+
+## Examples of redfishcli queries
 
 Queries based on attribute value
 ```
