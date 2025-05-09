@@ -41,7 +41,7 @@
 #include <syslog.h>
 #endif
 
-int verbose = LOG_CRIT;
+int verbose = LOG_DEBUG;
 
 static void safeFree(void* ptr);
 static void doCLI(redfishService* service);
@@ -96,6 +96,7 @@ void print_version()
 {
     printf("DMTF libRedfish CLI Tool\n");
     printf("Copyright 2017-2025 DMTF.\n");
+    printf("Version 0.2\n");
 }
 
 int main(int argc, char** argv)

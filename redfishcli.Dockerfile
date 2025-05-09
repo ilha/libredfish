@@ -14,9 +14,9 @@ COPY . /app
 WORKDIR /app
 
 # Build the project
-RUN cmake .  && \
+RUN cmake -D CMAKE_C_FLAGS="-D_DEBUG" -D CMAKE_CXX_FLAGS="-D_DEBUG" .  && \
     make && \
     make install && \
     cp bin/redfishcli /usr/local/bin/redfishcli 
 
-CMD ["/usr/local/bin/redfishcli"]
+ENTRYPOINT ["/usr/local/bin/redfishcli"]

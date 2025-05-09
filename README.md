@@ -105,6 +105,44 @@ int main(int argc, char** argv)
 }
 ```
 
+# Examples of redfishcli queries
+
+Queries based on attribute value
+```
+/> cd Chassis[Id=Enclosure]
+...
+
+/Chassis[Id=Enclosure]> cat .
+{
+  "@odata.id": "/redfish/v1/Chassis/Enclosure",
+  "@odata.type": "#Chassis.v1_24_0.Chassis",
+...
+}
+
+/> cd Chassis[Location.PartLocation.LocationOrdinalValue=1]
+...
+/Chassis[Location.PartLocation.LocationOrdinalValue=1]> cat .
+{
+  "@odata.id": "/redfish/v1/Chassis/Iom1",
+  "@odata.type": "#Chassis.v1_24_0.Chassis",
+  ...
+}
+
+/> cd Chassis[Location.PartLocation.LocationType=Bay and Location.PartLocation.LocationOrdinalValue=1]
+This does not work as epxected, it ignores the and condition
+```
+
+Queries based on array position
+```
+/> cd Chassis[1]
+/Chassis[1]> cat .
+{
+  "@odata.id": "/redfish/v1/Chassis/Enclosure",
+  "@odata.type": "#Chassis.v1_24_0.Chassis",
+  ...
+}
+```
+
 ## Release Process
 
 1. Go to the "Actions" page
